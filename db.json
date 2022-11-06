@@ -1,0 +1,26 @@
+{
+  "channels": [
+    {
+      "name": "Grupo Trabalho WebSocket",
+      "users": [
+        1
+      ],
+      "id": 1
+    }
+  ],
+  "users": [
+    {
+      "username": "Pedro",
+      "id": 1,
+      "avatar": "src/assets/avatar1.svg"
+    },
+    {
+      "username": "Rodrigo",
+      "id": 2,
+      "avatar": "src/assets/avatar2.svg"
+    }
+  ],
+  "messages": [
+
+  ]
+}
