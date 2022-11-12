@@ -18,16 +18,16 @@
 import { inject } from '@vue/runtime-core';
 export default {
   setup() {
-    const store = inject('store');
-    const { setUser } = store();
+    const store = inject('store')
+    const { setUser } = store()
 
     const login = function (e) {
-      e.preventDefault();
+      e.preventDefault()
 
-      const input = document.getElementById('uid');
+      const input = document.getElementById('uid')
 
       if (input && input?.value !== '') {
-        setUser(input.value);
+        setUser(input.value)
       }
     };
 
@@ -35,7 +35,7 @@ export default {
       login,
     };
   },
-};
+}
 </script>
 
 <style scoped>

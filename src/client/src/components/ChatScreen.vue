@@ -21,6 +21,8 @@
             <div class="username fw-bold">{{ msg.username }}</div>
             <div class="chatfield p-2">
               <span v-html="convertToLink(msg.message)"></span>
+              <br>
+              <span class="time text-muted">{{ formatDate(msg.date) }}</span>
             </div>
           </div>
         </div>
@@ -29,7 +31,7 @@
     <div class="chatbox-wrapper">
       <input
         type="text"
-        class="chatbox px-3 p-2"
+        class="chatbox px-4 p-2"
         placeholder="Envie uma mensagem..."
         @keyup.enter="userSendMsg"
       />
@@ -40,34 +42,37 @@
 <script>
 import { inject, onUpdated } from '@vue/runtime-core';
 import avatar1 from '../assets/avatar1.svg';
+import moment from 'moment'
 
 export default {
   name: 'ChatScreen',
   async setup() {
-    const store = inject('store');
+    const store = inject('store')
 
-    const { channelMessages, currentUser, currentChannel, sendMessage } = store();
+    const { channelMessages, currentUser, currentChannel, sendMessage } = store()
 
-    onUpdated(() => scrollBottom());
+    onUpdated(() => scrollBottom())
 
     const scrollBottom = () => {
-      const messages = document.getElementsByClassName('messages')[0];
+      const messages = document.getElementsByClassName('messages')[0]
 
       if (messages) {
-        messages.scrollTop = messages.scrollHeight;
+        messages.scrollTop = messages.scrollHeight
       }
-    };
+    }
 
     const userSendMsg = (e) => {
       e.preventDefault();
 
-      if (e.target.value === '') return;
-      scrollBottom();
+      if (e.target.value === '')
+        return
 
-      sendMessage(currentUser.value.id, currentChannel.value.id, e.target.value);
+      scrollBottom()
 
-      e.target.value = '';
-    };
+      sendMessage(currentUser.value.id, currentChannel.value.id, e.target.value)
+
+      e.target.value = ''
+    }
 
     return {
       avatar1,
@@ -75,18 +80,18 @@ export default {
       channelMessages,
       currentChannel,
       userSendMsg,
-    };
+    }
   },
   methods: {
     convertToLink: function (text) {
-      const URLMatcher =
-        /(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[A-Z0-9+&@#\/%=~_|$])/gim;
+      const URLMatcher = /(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[A-Z0-9+&@#\/%=~_|$])/gim
 
       return text.replace(
-        URLMatcher,
-        (text) =>
-          `<a class="text-primary" rel="noreferrer" target="_blank" href="${text}">${text}</a>`,
-      );
+        URLMatcher, (text) => `<a class="text-primary" rel="noreferrer" target="_blank" href="${text}">${text}</a>`,
+      )
+    },
+    formatDate: function (date) {
+      return moment(date).format('MM/DD/YYYY hh:mm:ss')
     },
   },
 };
@@ -100,7 +105,7 @@ export default {
   font-size: 1rem;
   background: var(--white3);
   transition: 0.2s;
-  color: var(--black2);
+  color: var(--blue1);
   width: 100%;
 }
 
@@ -110,7 +115,7 @@ export default {
 }
 
 h2 {
-  color: var(--purple1);
+  color: var(--blue1);
 }
 
 .messages {
@@ -129,11 +134,11 @@ h2 {
 
 .messages::-webkit-scrollbar-thumb {
   border-radius: 5px;
-  background: var(--purple1hover);
+  background: var(--blue1hover);
 }
 
 .chatfield {
-  background: var(--purple1);
+  background: var(--blue1);
   color: var(--white2);
   border-radius: 10px;
   border-top-left-radius: 0;

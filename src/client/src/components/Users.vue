@@ -19,17 +19,17 @@ import avatar1 from '../assets/avatar1.svg';
 export default {
   name: 'Users',
   setup() {
-    const store = inject('store');
+    const store = inject('store')
 
-    const { channelUsers, navbar } = store();
+    const { channelUsers, navbar } = store()
 
     return {
       avatar1,
       channelUsers,
       navbar,
-    };
+    }
   },
-};
+}
 </script>
 
 <style scoped>
@@ -38,7 +38,7 @@ export default {
 }
 
 a:hover {
-  background: var(--purple1hover);
+  background: var(--blue1hover);
   color: var(--white1);
   border-radius: 5px;
 }

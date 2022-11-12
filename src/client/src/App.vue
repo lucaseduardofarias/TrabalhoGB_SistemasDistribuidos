@@ -11,21 +11,19 @@ import { provide } from '@vue/runtime-core';
 import store from './store';
 provide('store', store);
 
-const { setUser, addMessage, currentChannel } = store();
+const { setUser, addMessage, currentChannel } = store()
 
-// Get user from sessionStorage if exist
 if (sessionStorage.getItem('user')) {
-  const userData = JSON.parse(sessionStorage.getItem('user'));
-  setUser(userData.id);
+  const userData = JSON.parse(sessionStorage.getItem('user'))
+  setUser(userData.id)
 }
 
 connection.onmessage = function (message) {
-  const data = JSON.parse(message.data);
-
+  const data = JSON.parse(message.data)
   if (data.channelId === currentChannel.value.id) {
-    addMessage(data);
+    addMessage(data)
   }
-};
+}
 </script>
 
 <style>
@@ -40,11 +38,11 @@ connection.onmessage = function (message) {
   --white2: #f9fbfc;
   --white3: #f0f0f0;
   --black1: #30333d;
-  --purple1: #2c49a3;
-  --purple1hover: linear-gradient(
+  --blue1: #2c49a3;
+  --blue1hover: linear-gradient(
     90deg,
-    rgba(106, 0, 255, 0.42930675688244047) 0%,
-    rgba(209, 0, 255, 0.43) 100%
+    #2c49a3 0%,
+    #2c49a3 100%
   );
   --purple2: #e9eff4;
   --gray1: #a4acb2;

@@ -14,6 +14,7 @@
         :id="channel.id"
         @click="setCurrentChannel"
       >
+
         <h6 class="fw-bold">{{ channel.name }}</h6>
         <span>Últimas mensagens...</span>
       </a>
@@ -27,24 +28,24 @@ import { inject } from 'vue';
 export default {
   name: 'Channels',
   async setup() {
-    const store = inject('store');
-    const { channels, setChannel, currentChannel, navbar, toggleNavbar } = store();
+    const store = inject('store')
+    const { channels, setChannel, currentChannel, navbar, toggleNavbar } = store()
 
     const setCurrentChannel = function (e) {
-      let id = e.target.closest('a').id;
+      let id = e.target.closest('a').id
 
-      setChannel(id);
-      toggleNavbar('channels');
-    };
+      setChannel(id)
+      toggleNavbar('channels')
+    }
 
     return {
       channels,
       currentChannel,
       setCurrentChannel,
       navbar,
-    };
+    }
   },
-};
+}
 </script>
 
 <style scoped>
@@ -82,7 +83,7 @@ button {
   outline: none;
   border: none;
   font-size: 1rem;
-  background: var(--purple1);
+  background: var(--blue1);
   border-radius: 50%;
   color: var(--white1);
   font-weight: 600;
@@ -90,7 +91,7 @@ button {
 }
 
 button:hover {
-  background: var(--purple1hover);
+  background: var(--blue1hover);
 }
 
 h5 {

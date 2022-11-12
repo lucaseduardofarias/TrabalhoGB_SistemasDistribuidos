@@ -19,18 +19,18 @@ export default {
     hidden: Boolean,
   },
   setup(props) {
-    const { hidden } = toRefs(props);
+    const { hidden } = toRefs(props)
 
-    const store = inject('store');
-    const { toggleNavbar } = store();
-    const isUserValid = ref(hidden);
+    const store = inject('store')
+    const { toggleNavbar } = store()
+    const isUserValid = ref(hidden)
 
     const toggleChannels = function () {
-      toggleNavbar('channels');
+      toggleNavbar('channels')
     };
 
     const toggleUsers = function () {
-      toggleNavbar('users');
+      toggleNavbar('users')
     };
 
     return {
@@ -39,9 +39,9 @@ export default {
       toggleChannels,
       toggleUsers,
       isUserValid,
-    };
+    }
   },
-};
+}
 </script>
 
 <style scoped>
@@ -63,7 +63,7 @@ a:hover {
 
 .navbar {
   z-index: 1;
-  background: var(--purple1);
+  background: var(--blue1);
   padding: 0.5em 1em;
 }
 

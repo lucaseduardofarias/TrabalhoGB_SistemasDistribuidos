@@ -26,19 +26,19 @@ import { inject, onUpdated, ref } from '@vue/runtime-core';
 
 export default {
   async setup() {
-    const store = inject('store');
-    const hidden = ref(true);
-    const { currentChannel, currentUser } = store();
+    const store = inject('store')
+    const hidden = ref(true)
+    const { currentChannel, currentUser } = store()
 
     onUpdated(() => {
-      hidden.value = false;
+      hidden.value = false
     });
 
     return {
       currentChannel,
       currentUser,
       hidden,
-    };
+    }
   },
   components: {
     Channels,
@@ -47,5 +47,5 @@ export default {
     Login,
     Navbar,
   },
-};
+}
 </script>
